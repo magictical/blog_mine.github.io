@@ -148,10 +148,10 @@
 
     const script = document.createElement("script");
     script.src = "https://giscus.app/client.js";
-    script.setAttribute("data-repo", "magictical/magictical.github.io");
-    script.setAttribute("data-repo-id", "R_kgDOQec0aw"); // Giscus 설정 후 변경 필요
+    script.setAttribute("data-repo", "magictical/blog_mine.github.io");
+    script.setAttribute("data-repo-id", "YOUR_REPO_ID"); // Giscus 설정 후 변경 필요
     script.setAttribute("data-category", "General");
-    script.setAttribute("data-category-id", "DIC_kwDOQec0a84CzIz0"); // Giscus 설정 후 변경 필요
+    script.setAttribute("data-category-id", "YOUR_CATEGORY_ID"); // Giscus 설정 후 변경 필요
     script.setAttribute("data-mapping", "pathname");
     script.setAttribute("data-strict", "0");
     script.setAttribute("data-reactions-enabled", "1");
