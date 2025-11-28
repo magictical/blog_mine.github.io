@@ -1,13 +1,19 @@
 const fs = require("fs");
 const path = require("path");
 
-const postsDir = "pages";
-const outputFile = "posts.json";
+// 실행 위치와 관계없이 항상 프로젝트 루트의 pages 폴더를 찾도록 수정
+const postsDir = path.join(__dirname, "../../pages");
+const outputFile = path.join(__dirname, "../../posts.json");
 
 if (!fs.existsSync(postsDir)) {
-  console.log("pages 디렉토리가 없습니다. 빈 posts.json을 생성합니다.");
-  fs.writeFileSync(outputFile, JSON.stringify([], null, 2));
-  process.exit(0);
+  console.log(`pages 디렉토리가 없습니다: ${postsDir}`);
+  // 혹시 실행 위치가 다를 수 있으니 현재 디렉토리 기준도 확인
+  if (fs.existsSync("pages")) {
+     console.log("현재 디렉토리의 pages를 사용합니다.");
+  } else {
+      fs.writeFileSync(outputFile, JSON.stringify([], null, 2));
+      process.exit(0);
+  }
 }
 
 const files = fs
@@ -89,4 +95,3 @@ posts.sort((a, b) => new Date(b.date) - new Date(a.date));
 
 fs.writeFileSync(outputFile, JSON.stringify(posts, null, 2));
 console.log(`Generated posts.json with ${posts.length} posts`);
-
